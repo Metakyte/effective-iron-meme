@@ -41,3 +41,60 @@ A Tony Stark-inspired desk setup: clap a pattern and your PC powers on while the
 | 1000 uF capacitor | 1 | Across strip power at the input |
 | 330 ohm resistor | 1 | Inline on LED data |
 
+**INMP441 -> ESP32**
+
+| INMP441 | ESP32 |
+|---------|-------|
+| VDD | 3.3V |
+| GND | GND |
+| L/R | GND (left channel) |
+| SCK | GPIO 14 |
+| WS | GPIO 15 |
+| SD | GPIO 32 |
+
+All pins are configurable in `config.h`.
+
+## Setup
+
+### 1. PC (Wake-on-LAN)
+
+- Enable **Wake on LAN** / **Power on by PCI-E** in the BIOS
+- Windows Device Manager -> network adapter -> Power Management and Advanced tabs -> enable **Wake on Magic Packet**
+- Use wired Ethernet
+- Note the PC's MAC address and IP (`ipconfig /all`)
+
+### 3. Clap detector
+
+```bash
+git clone https://github.com/YOUR_USERNAME/clap-to-wake.git
+cd clap-to-wake
+cp secrets.example.h secrets.h
+```
+
+Fill in `secrets.h`:
+
+```cpp
+#define WIFI_SSID     "your-network"
+#define WIFI_PASSWORD "your-password"
+#define PC_MAC        "AA:BB:CC:DD:EE:FF"
+#define PC_IP         "192.168.1.50"
+#define WLED_IP       "192.168.1.60"
+```
+
+Then build and upload with the Arduino IDE (board: **ESP32 Dev Module**) or PlatformIO.
+
+> `secrets.h` is in `.gitignore`. Never commit it.
+
+## Clap Patterns
+
+| Pattern | Action |
+|---------|--------|
+| clap ... clap-clap | PC on |
+
+Patterns and timing tolerance are set in `config.h`.
+
+## Tuning
+
+- **False triggers:** raise the spike threshold or require a longer quiet gap before the first clap
+- **Missed claps:** lower the threshold or move the mic closer
+- **Double-counted claps (echo):** increase the minimum gap between spikes (default 100 ms)
