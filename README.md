@@ -35,11 +35,7 @@ A Tony Stark-inspired desk setup: clap a pattern and your PC powers on while the
 |------|-----|-------|
 | ESP32-WROOM-32 dev board | 2 | One for clap detection, one for WLED |
 | INMP441 I2S microphone | 1 | MAX9814 analog mic also works |
-| WS2812B / SK6812 LED strip (5V) | 1 | Any length |
-| 5V power supply | 1 | Budget ~60 mA per LED at full white |
-| 74AHCT125 level shifter | 1 | 3.3V -> 5V LED data |
-| 1000 uF capacitor | 1 | Across strip power at the input |
-| 330 ohm resistor | 1 | Inline on LED data |
+| 5V power supply | 1 | enough to power the board and mic |
 
 **INMP441 -> ESP32**
 
