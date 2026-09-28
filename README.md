@@ -1,13 +1,12 @@
 # Clap-to-Wake
 
-A Tony Stark-inspired desk setup: clap a pattern and your PC powers on while the LED strip lights up. Built on two ESP32 boards, fully offline, no cloud services.
+A Tony Stark-inspired desk setup: clap a pattern and your PC powers on while the LED strip lights up (removed). Built on one ESP32 board, fully offline, no cloud services.
 
 ## Features
 
 - **Clap pattern detection** with an I2S MEMS microphone, timing-tolerant so it matches whether you clap fast or slow
-- **PC power-on** via Wake-on-LAN, or an optocoupler wired to the motherboard power switch header
+- **PC power-on** via Wake-on-LAN
 - **Already-on check** so repeat claps never shut the PC down
-- **LED control** through [WLED](https://kno.wled.ge/) running on a second ESP32
 - **Separate "off" pattern** so lights never turn off by accident
 
 ## How It Works
