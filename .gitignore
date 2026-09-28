@@ -67,3 +67,17 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Secrets (Wi-Fi password, MAC address)
+secrets.h
+
+# Arduino IDE / build output
+build/
+*.bin
+*.elf
+*.hex
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
